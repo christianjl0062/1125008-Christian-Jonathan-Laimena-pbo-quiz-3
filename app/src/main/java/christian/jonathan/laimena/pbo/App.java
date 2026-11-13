@@ -3,8 +3,12 @@
  */
 package christian.jonathan.laimena.pbo;
 
+import christian.jonathan.laimena.pbo.controller.MahasiswaAppController;
+import christian.jonathan.laimena.pbo.models.Mahasiswa;
+
 public class App {
     public static void main(String[] args) {
-        System.out.println("Tes. belum isi. aplikasi masih kosong");
+        MahasiswaAppController controller =  new MahasiswaAppController();
+        controller.runMahasiswaApp();
     }
 }
