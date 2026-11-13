@@ -10,8 +10,14 @@ public abstract class DataView<T> {
     }
 
     public void printAll() {
+        String[] fields = this.getFields();
         for (int i = 0; i < records.size(); i++) {
-            System.out.println(records.get(i));
+            String[] values = this.convertModelToValues(records.get(i));
+            System.out.print(i + ". ");
+            for (int j = 0; j < fields.length; j++) {
+                System.out.print(values[j] + " ");
+            }
+            System.out.println();
         }
     }
 
@@ -34,17 +40,18 @@ public abstract class DataView<T> {
         // Menampilkan prompt input berdasarkan daftar nama field dari getFields(), 
         // mengonversi array hasil input menjadi objek T melalui
         // convertValuesToModel(String[] values), lalu menambahkannya ke records.
-        boolean isPKFound = false;
+        boolean isRecordFound = false;
         for (int i = 0; i < records.size(); i++) {
             T recordMahasiswa = records.get(i);
-            if (getPrimaryKeyValue(recordMahasiswa).equals()) {
-                System.out.println(recordMahasiswa);
-                isPKFound = true;
+            if (getFields().equals(recordMahasiswa)) {
+                System.out.println();
+                isRecordFound = true;
             }
         }
 
-        if (isPKFound == false) {
-            System.out.println("Gak nemu PK nya. maaf.");
+
+        if (isRecordFound == false) {
+            System.out.println("Gak nemu nama field nya. maaf.");
         }
 
     }
