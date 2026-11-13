@@ -23,17 +23,15 @@ public abstract class DataView<T> {
     }
 
     public void printByPk(String primaryKey) {
-        boolean isPKFound = false;
+        String[] fields = this.getFields();
         for (int i = 0; i < records.size(); i++) {
             T recordMahasiswa = records.get(i);
-            if (getPrimaryKeyValue(recordMahasiswa).equals(primaryKey)) {
-                System.out.println(recordMahasiswa);
-                isPKFound = true;
+            for (int j = 0; j < fields.length; j++) {
+                if (getPrimaryKeyValue(recordMahasiswa).equals(primaryKey)) {
+                    System.out.println(recordMahasiswa);
+                }
             }
-        }
-
-        if (isPKFound == false) {
-            System.out.println("Gak nemu PK nya. maaf.");
+            System.out.println();
         }
     }
 
